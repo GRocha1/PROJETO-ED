@@ -5,7 +5,7 @@
 
 #define qtbuckts 2000
 
-int quant = 0;
+//int quant = 0;
 int colisoes = 0;
 int vazios = 0 ;
 
@@ -36,8 +36,7 @@ void add(struct Node** N,char* palavra){  // #3 testar adicionar elementos sem c
 	//printf("%s %d  :",palavra, j );
 	struct Node *aux ;
 	aux = N[j];
-	if (N[j]->palavra == NULL)
-	{
+	if (N[j]->palavra == NULL){
 		N[j]->palavra = palavra;
 		N[j]->next = NULL;
 	}else{
@@ -124,10 +123,9 @@ void desenharTabela(struct Node** N){
 
 void Vazios(struct Node** N){
 	int i;
-	int qt = 0;
+	//int qt = 0;
 	struct Node *aux ;
-	for (i = 0; i < qtbuckts; i++)
-	{
+	for (i = 0; i < qtbuckts; i++){
 		struct Node *aux = NULL;
 		aux = N[i];
 		if(aux->palavra == NULL){
