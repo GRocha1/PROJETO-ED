@@ -1,4 +1,4 @@
-int hash(char* palavra){ // #1 testar essa função em separado
+int hash(char* palavra){ //#1 testar essa função em separado
 	int h = 0;
 	int i;
 	for ( i = 0; i < strlen(palavra); ++i){

@@ -18,7 +18,7 @@ struct Node
 struct Node* N[qtbuckts];
 
 
-int hash(char* palavra){ // #1 testar essa função em separado
+int hash(char* palavra){ // Hash Método Horner
 	int h = palavra[0];
 	int i;
 	for ( i = 1; i < strlen(palavra); ++i){
