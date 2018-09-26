@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-#define qtbuckts 2000
+#define qtbuckts 30000
 
 //int quant = 0;
 int colisoes = 0;
@@ -19,14 +19,12 @@ struct Node* N[qtbuckts];
 
 
 int hash(char* palavra){ // #1 testar essa função em separado
-	int h = 0;
+	int h = palavra[0];
 	int i;
-	for ( i = 0; i < strlen(palavra); ++i)
-	{
-		h =  h + (palavra[i]) ;
+	for ( i = 1; i < strlen(palavra); ++i){
+		h = ((h * 251) + palavra[i]) % qtbuckts;
 	}
-	h = h%qtbuckts;
-	//h = (h-1);
+
 	return h;
 }
 
@@ -98,7 +96,6 @@ void LeDicionario(){
 	        //printf("%d \n",++quant);
 			add(N,pDicio);
 			}
-
 		}
 	fclose(fp);
 }
@@ -106,8 +103,7 @@ void LeDicionario(){
 void desenharTabela(struct Node** N){
 	int i;
 	struct Node *aux ;
-	for (i = 0; i < qtbuckts; i++)
-	{
+	for (i = 0; i < qtbuckts; i++){
 		printf("bucket[%d]\n",i);
 		struct Node *aux = NULL;
 		aux = N[i];
@@ -116,7 +112,6 @@ void desenharTabela(struct Node** N){
 		aux = aux->next;
 		}
 		printf("\n\n\n\n\n\n\n");
-
 	}
 
 }
@@ -173,6 +168,8 @@ int main(void){
     printf("numero de buckets: %d\n", qtbuckts);
     printf("colisoes:  %d\n", colisoes);
     printf("vazios: %d\n", vazios);
+    printf("usados: %d\n", qtbuckts - vazios);
+    printf("col/buckets: %.2lf\n", (double)colisoes/(qtbuckts - vazios));
     //LeTexto();
 	//desenharTabela(N);
 
